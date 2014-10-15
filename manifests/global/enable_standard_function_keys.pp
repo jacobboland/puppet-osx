@@ -5,7 +5,10 @@ class osx::global::enable_standard_function_keys($enabled = true)  {
     domain => 'NSGlobalDomain',
     key    => 'com.apple.keyboard.fnState',
     type   => 'int',
-    value  => $enabled ? 1 : 0,
+    value  => $enabled ? {
+      true => 1,
+      false => 0
+    },
     user   => $::boxen_user;
   }
 }
